@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Header = ({ activeSection, setActiveSection }) => {
+const Header = ({ activeSection, setActiveSection, onLogoClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -14,11 +14,23 @@ const Header = ({ activeSection, setActiveSection }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSection(sectionId);
-      setIsMobileMenuOpen(false);
+    if (onLogoClick) {
+      onLogoClick();
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setActiveSection(sectionId);
+          setIsMobileMenuOpen(false);
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActiveSection(sectionId);
+        setIsMobileMenuOpen(false);
+      }
     }
   };
 
@@ -32,14 +44,17 @@ const Header = ({ activeSection, setActiveSection }) => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-zinc-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-zinc-900/95 backdrop-blur-sm shadow-lg' : 'bg-zinc-900/95 backdrop-blur-sm'
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button 
-            onClick={() => scrollToSection('hero')}
+            onClick={() => {
+              if (onLogoClick) onLogoClick();
+              scrollToSection('hero');
+            }}
             className="text-2xl font-bold tracking-wider hover:text-olive-500 transition-colors"
             aria-label="Volver al inicio"
           >

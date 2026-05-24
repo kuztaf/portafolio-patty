@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import ProjectDetail from './ProjectDetail';
 
-const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+const Projects = ({ onProjectClick }) => {
   const [imageLoading, setImageLoading] = useState({});
 
   // Mock data de proyectos
@@ -12,7 +10,17 @@ const Projects = () => {
       title: 'Dirección Editorial',
       category: 'Diseño',
       description: 'Proyectos de dirección editorial para publicaciones impresas y digitales.',
-      image: 'https://placehold.co/800x600/556142/ffffff?text=Dirección+Editorial',
+      subtitle: 'Amarcord',
+      subdescription: 'Desarrollo de dirección de arte y diseño editorial para una revista académica de la Facultad de Arte, Diseño y Comunicación Audiovisual de la ESPOL, enfocada en crear una experiencia visual clara, contemporánea y funcional, integrando composición, jerarquía tipográfica e identidad gráfica.',
+      image: 'images/editorial.png',
+      gallery:[
+        'images/editorial1.png',
+        'images/editorial2.png',
+        'images/editorial3.png',
+        'images/editorial4.png',
+        'images/editorial5.png'
+      ],
+      imageFooter: 'images/editorialE.png',
       color: 'from-olive-600 to-olive-700'
     },
     {
@@ -134,11 +142,11 @@ const Projects = () => {
               key={project.id}
               className="group relative overflow-hidden rounded-xl bg-zinc-800 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => onProjectClick(project)}
               role="button"
               tabIndex={0}
               aria-label={`Ver detalles de ${project.title}`}
-              onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(project)}
+              onKeyDown={(e) => e.key === 'Enter' && onProjectClick(project)}
             >
               {/* Imagen */}
               <div className="relative aspect-[4/3] overflow-hidden bg-zinc-800">
@@ -186,12 +194,6 @@ const Projects = () => {
           </div>
         )}
       </div>
-
-      {/* Componente de detalle del proyecto */}
-      <ProjectDetail 
-        project={selectedProject} 
-        onClose={() => setSelectedProject(null)} 
-      />
     </section>
   );
 };
