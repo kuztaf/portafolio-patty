@@ -63,7 +63,7 @@ const ProjectDetail = ({ project, onClose }) => {
             images={project.gallery} 
             title="Galería del Proyecto"
             projectTitle={project.title}
-            columns={1}
+            columns={project.galleryCols || 1}
           />
         )}
 
