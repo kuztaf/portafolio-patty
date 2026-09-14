@@ -239,7 +239,24 @@ const Projects = ({ onProjectClick }) => {
       image:  'images/reel.png',
       video: 'videos/Reel.mp4',
       color: 'from-olive-700 to-zinc-700',  
-    }
+    },
+    {
+      id: 11,
+      title: 'Comunicación y contenido digital',
+      category: 'Diseño',
+      description: 'Identidad visual y gestión de redes sociales para la Hermandad Servita de Madrid.',
+      subtitle: 'Comunicación y contenido digital',
+      subdescription: 'Esta sección reúne las piezas gráficas y contenidos digitales desarrollados para la Hermandad Servita de Madrid, desde la creación de una identidad visual coherente hasta la gestión de su comunicación en Instagram. Incluye una selección de campañas y publicaciones que reflejan la evolución y el impacto de la estrategia de contenido.',
+      image: 'images/porth-00.jpg',
+      gallery:[
+        'images/porth-01.jpg',
+        'images/porth-02.jpg',
+        'images/porth-03.jpg',
+        'images/porth-04.jpg',
+        'images/porth-05.jpg'
+      ],
+      color: 'from-olive-600 to-olive-700'
+    },
   ];
 
   const categories = ['Todos', ...new Set(projects.map(p => p.category))];
