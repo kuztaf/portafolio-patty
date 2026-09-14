@@ -200,6 +200,7 @@ const Projects = ({ onProjectClick }) => {
       image:  'images/corto.png',
       color: 'from-olive-600 to-teal-700',
       galleryCols: 3,
+      video: 'videos/Babadook.mp4',
       gallery:[
         'images/corto1.png',
         'images/corto2.png',
@@ -236,7 +237,8 @@ const Projects = ({ onProjectClick }) => {
       category: 'Audiovisual',
       description: 'Compilación de trabajos audiovisuales y producción de contenido.',
       image:  'images/reel.png',
-      color: 'from-olive-700 to-zinc-700'
+      video: 'videos/Reel.mp4',
+      color: 'from-olive-700 to-zinc-700',  
     }
   ];
 

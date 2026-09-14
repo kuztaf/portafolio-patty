@@ -57,6 +57,30 @@ const ProjectDetail = ({ project, onClose }) => {
           </div>
         </div>
 
+        {/* Video del proyecto */}
+        {project.video && (
+          <section className="bg-black py-20">
+            <div className="max-w-6xl mx-auto px-8 md:px-16">
+              <h2 className="text-3xl font-bold text-center mb-10">
+                Video del proyecto
+              </h2>
+
+              <div className="overflow-hidden rounded-xl bg-zinc-900 shadow-2xl">
+                <video
+                  className="w-full aspect-video object-contain"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={project.image}
+                >
+                  <source src={project.video} type="video/mp4" />
+                  Tu navegador no puede reproducir este video.
+                </video>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Galería adicional */}
         {project.gallery && project.gallery.length > 0 && (
           <Gallery 
